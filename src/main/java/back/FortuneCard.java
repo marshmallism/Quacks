@@ -1,21 +1,24 @@
 package back;
-public class FortuneCard {
-    private final String name;
-    private final String description;
-    private final FortuneCardType type;
 
-    public FortuneCard(String name, String description, FortuneCardType type) {
-        this.name = name;
-        this.description = description;
+import java.awt.image.BufferedImage;
+
+public class FortuneCard {
+    private final FortuneType type;
+    private final FortuneRule rule;
+    private final BufferedImage image;
+
+    public FortuneCard(FortuneType type, FortuneRule rule, BufferedImage image) {
         this.type = type;
+        this.rule = rule;
+        this.image = image;
     }
 
-    public String getName() { return name; }
-    public String getDescription() { return description; }
-    public FortuneCardType getType() { return type; }
+    public FortuneType getType() { return type; }
+    public FortuneRule getRule() { return rule; }
+    public BufferedImage getImage() { return image; }
 
     @Override
     public String toString() {
-        return "[" + type.name() + "] " + name + ": " + description;
+        return "[" + type.name() + "] " + rule.name() + ": " + image;
     }
 }
