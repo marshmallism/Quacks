@@ -11,12 +11,13 @@ public class IngredientBook {
 
     // creates a new ingredient book with the set given
     public IngredientBook(int set, ChipColor color, BufferedImage image) {
-        this.set = set;
+        IngredientBook.set = set;
         this.color = color;
         this.image = image;
         costs = new ArrayList<>();
         // initializes costs
         switch (color) {
+            //white is missing bc can't buy
             case ORANGE -> {
                 costs.add(3);
             }
@@ -94,6 +95,27 @@ public class IngredientBook {
                     costs.add(11);
                 }
             }
+        }
+    }
+    //returns cost of the specified index; 0 is the first chip, 1 is the second, 2 is the third
+    public int getCost(int index) {
+        return costs.get(index);
+    }
+
+    //applies rule to a player, according to the set, color, and index chip
+    public void applyRule(Player p, int index) {
+        Bag b = p.getBag();
+        switch (color) {
+            //orange and white don't have special rules
+            case BLUE -> {
+
+            }
+            case RED -> {}
+            case YELLOW -> {}
+            case GREEN -> {}
+            case BLACK -> {}
+            case PURPLE -> {}
+
         }
     }
 }
