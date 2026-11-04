@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class Player {
     private String name;
     private TreeMap<Integer, Integer> chips; // key: chip value, value: number of chips
-    private Pot pot;
+    private Potion pot;
     private int currentScore;
     private int totalScore;
     private boolean flaskFull;
