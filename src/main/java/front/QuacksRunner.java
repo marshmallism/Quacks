@@ -13,37 +13,35 @@ public class QuacksRunner {
         SwingUtilities.invokeLater(() -> {
             frame = new QuacksFrame();
             frame.setVisible(true);
+            showStartScreen();
         });
     }
-    public static void showStartScreen() {
-        frame.add(startScreen);
-        startScreen.setVisible(true);
-        frame.revalidate();
-        frame.repaint();
-    }
-    public static void showGame() {
-        startScreen.setVisible(false);
+
+    // Shows one panel and hides the rest
+    private static void show(JPanel panel) {
+        gameScreen.setVisible(false);
         instructionsPanel.setVisible(false);
         scoringPanel.setVisible(false);
-        frame.add(gameScreen);
+        startScreen.setVisible(false);
+
+        panel.setBounds(0, 0, QuacksFrame.getFrameWidth(), QuacksFrame.getFrameHeight());
+        frame.add(panel);
+        panel.setVisible(true);
         frame.revalidate();
         frame.repaint();
+    }
+
+    public static void showStartScreen() {
+        show(startScreen);
+    }
+    public static void showGame() {
+        show(gameScreen);
     }
     public static void showInstructionsPanel() {
-        gameScreen.setVisible(false);
-        startScreen.setVisible(false);
-        frame.add(instructionsPanel);
-        instructionsPanel.setVisible(true);
-        frame.revalidate();
-        frame.repaint();
+        instructionsPanel.resetPage();
+        show(instructionsPanel);
     }
     public static void showScoringTrackPanel() {
-        gameScreen.setVisible(false);
-        startScreen.setVisible(false);
-        instructionsPanel.setVisible(false);
-        frame.add(scoringPanel);
-        scoringPanel.setVisible(true);
-        frame.revalidate();
-        frame.repaint();
+        show(scoringPanel);
     }
 }
