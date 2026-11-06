@@ -12,7 +12,9 @@ public class FortuneDeck {
     ArrayList<FortuneCard> cards = new ArrayList<FortuneCard>();
     BufferedImage[] purple = new BufferedImage[13];
     BufferedImage[] blue = new BufferedImage[11];
+    BufferedImage back;
     public FortuneDeck() {
+        //read in all images
         try {
             for (int i = 0; i < 13; i++) {
                 purple[i] = ImageIO.read(new File("F"+(i+1)));
@@ -20,6 +22,7 @@ public class FortuneDeck {
             for (int i = 0; i < 11; i++) {
                 blue[i] = ImageIO.read(new File("FB"+(i+1)));
             }
+            back = ImageIO.read(new File("FBack.png"));
         }
         catch (Exception E) {
             System.out.println("Exception Input Error");
