@@ -6,4 +6,7 @@ import java.util.TreeMap;
 public class Potion {
     TreeMap<Integer, Chip> placedChips;
     BufferedImage image;
+    public Potion() {
+
+    }
 }
