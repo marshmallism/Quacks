@@ -23,20 +23,20 @@ public class Player {
     public Player(String name) {
         this.name = name;
         chips = new TreeMap<Integer, Integer>();
-        pot = new Pot();
+//        pot = new Pot();
         flaskFull = true;
         rubies = 1;
         bag = new Bag();
     }
     public void roundReset() {
         bag.roundReset();
-        pot.resetPot();
+//        pot.resetPot();
         totalScore += currentScore;
         currentScore = 0;
     }
-    public void placeInPot(Chip chip) {
-        pot.addChip(chip);
-    }
+//    public void placeInPot(Chip chip) {
+//        pot.addChip(chip);
+//    }
     public void moveDroplet(int spaces) {
         dropletPos += spaces;
     }
@@ -50,9 +50,9 @@ public class Player {
     public int getBagSize() {
         return bag.getAvailableChips().size();
     }
-    public int getCurrentPosition() {
-        return pot.getPosition();
-    }
+//    public int getCurrentPosition() {
+////        return pot.getPosition();
+//    }
     public void refillFlask() {
         flaskFull = true;
     }
@@ -86,7 +86,7 @@ public class Player {
     //getters
     public String getName() {return name;}
     public TreeMap<Integer, Integer> getChips() {return chips;}
-    public Pot getPot() {return pot;}
+//    public Pot getPot() {return pot;}
     public int getCurrentScore() {return currentScore;}
     public int getTotalScore() {return totalScore;}
     public boolean isFlaskFull() {return flaskFull;}

@@ -29,10 +29,10 @@ public class StartScreenPanel extends JPanel implements MouseListener {
 
     public StartScreenPanel() {
         try {
-            background = ImageIO.read(new File("Background/Game screen (2).png"));
-            cauldron = ImageIO.read(new File("Background/CouldronFront.png"));
-            logo = ImageIO.read(new File("Background/Logo.png"));
-            buttons = ImageIO.read(new File("Background/FrontButton.png"));
+            background = ImageIO.read(new File("src/main/resources/Background/Game screen (2).png"));
+            cauldron = ImageIO.read(new File("src/main/resources/Background/CouldronFront.png"));
+            logo = ImageIO.read(new File("src/main/resources/Background/Logo.png"));
+            buttons = ImageIO.read(new File("src/main/resources/Background/FrontButton.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
