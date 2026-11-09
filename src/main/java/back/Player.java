@@ -30,7 +30,7 @@ public class Player {
     }
     public void roundReset() {
         bag.roundReset();
-//        pot.resetPot();
+        //pot.resetPot();
         totalScore += currentScore;
         currentScore = 0;
     }
@@ -86,7 +86,7 @@ public class Player {
     //getters
     public String getName() {return name;}
     public TreeMap<Integer, Integer> getChips() {return chips;}
-//    public Pot getPot() {return pot;}
+    //public Pot getPot() {return pot;}
     public int getCurrentScore() {return currentScore;}
     public int getTotalScore() {return totalScore;}
     public boolean isFlaskFull() {return flaskFull;}
