@@ -8,6 +8,7 @@ public class QuacksRunner {
     public static final InstructionsPanel instructionsPanel = new InstructionsPanel();
     public static final ScoringTrackPanel scoringPanel = new ScoringTrackPanel();
     public static final StartScreenPanel startScreen = new StartScreenPanel();
+    public static final PlayerPanel playerPanel = new PlayerPanel();
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -37,6 +38,7 @@ public class QuacksRunner {
     public static void showGame() {
         show(gameScreen);
     }
+    public static void showPlayers() { show(playerPanel);}
     public static void showInstructionsPanel() {
         instructionsPanel.resetPage();
         show(instructionsPanel);
