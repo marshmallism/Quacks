@@ -1,6 +1,6 @@
 package back;
 
-public class Chip {
+public class hip {
     private final ChipColor color;
     private final int value;
 
