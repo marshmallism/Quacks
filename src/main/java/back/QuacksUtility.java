@@ -7,6 +7,7 @@ public class QuacksUtility
     {
 
 
+
     }
 
     public int getScoringSpace(Player p)
@@ -39,11 +40,40 @@ public class QuacksUtility
 
     }
 
-    public int countChipsByCOlor(Player p, String color)
+    public int countChipsByColor(Player p, String color)
     {
 
     }
 
+    public boolean canPurchaseChip(Player p)
+    {
+
+    }
+
+    public void returnPotChipsToBag(Ingredient i)
+    {
+
+    }
+
+    public int convertCoinsToVictoryPoints(int coins)
+    {
+
+    }
+
+    public int convertRubiesToVictoryPoints(int rubies)
+    {
+
+    }
+
+    public void stopDrawing(Player p)
+    {
+
+    }
+
+    public void useFlask(Player p)
+    {
+
+    }
 
 
 
