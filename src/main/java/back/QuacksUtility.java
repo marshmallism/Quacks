@@ -5,8 +5,15 @@ public class QuacksUtility
 {
     public int calculateWhiteTotal(Player p)
     {
+        int totalValue = 0;
 
-
+        TreeMap<Integer, Integer> playerChips = p.getChips(); // get the map of chips from the player
+        for (int chipValue : playerChips.keySet()) // loop through each chip value (1,2,3) using keySet()
+        {
+            int count = playerChips.get(chipValue); // get the count of how many chips they have of this value
+            totalValue += (chipValue * count);
+        }
+        return totalValue;
 
     }
 
