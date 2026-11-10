@@ -10,10 +10,8 @@ public class QuacksFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
         pack();
-        //setSize(WIDTH, HEIGHT);
+        setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
-        setLayout(null);
+        setLayout(new BorderLayout());
     }
-    public static int getFrameWidth() { return WIDTH; }
-    public static int getFrameHeight() { return HEIGHT; }
 }
