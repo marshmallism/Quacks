@@ -37,9 +37,9 @@ public class InstructionsPanel extends JPanel implements MouseListener {
     public InstructionsPanel() {
         pageNum = 0;
         try {
-            background = ImageIO.read(new File("src/main/resources/Background/Game screen (2).png"));
+            background = ImageIO.read(new File("src/main/resources/Background/StartScreen.png"));
             for (int i = 0; i < 3; i++) {
-                BufferedImage full = ImageIO.read(new File("src/main/resources/Background/Instructions page " + (i + 1) + ".png"));
+                BufferedImage full = ImageIO.read(new File("src/main/resources/Background/Instructions" + (i + 1) + ".png"));
                 pages.add(full.getSubimage(CARD_X[i], CARD_Y[i], CARD_WIDTH, CARD_HEIGHT));
             }
         } catch (Exception e) {

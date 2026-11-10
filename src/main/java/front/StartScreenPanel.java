@@ -29,7 +29,7 @@ public class StartScreenPanel extends JPanel implements MouseListener {
 
     public StartScreenPanel() {
         try {
-            background = ImageIO.read(new File("src/main/resources/Background/Game screen (2).png"));
+            background = ImageIO.read(new File("src/main/resources/Background/StartScreen.png"));
             cauldron = ImageIO.read(new File("src/main/resources/Background/CauldronFront.png"));
             logo = ImageIO.read(new File("src/main/resources/Background/Logo.png"));
             buttons = ImageIO.read(new File("src/main/resources/Background/FrontButton.png"));
@@ -60,7 +60,7 @@ public class StartScreenPanel extends JPanel implements MouseListener {
         int y = e.getY() * ART_HEIGHT / getHeight();
 
         if (START_BOX.contains(x, y)) {
-            QuacksRunner.showGame();
+            QuacksRunner.showPlayers();
         } else if (INSTRUCTIONS_BOX.contains(x, y)) {
             QuacksRunner.showInstructionsPanel();
         } else if (QUIT_BOX.contains(x, y)) {
