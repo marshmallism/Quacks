@@ -2,8 +2,8 @@ package front;
 import javax.swing.*;
 import java.awt.*;
 public class QuacksFrame extends JFrame{
-    private static final int WIDTH = 1280;
-    private static final int HEIGHT = 720;
+    private static final int WIDTH = 1920;
+    private static final int HEIGHT = 1080;
 
     public QuacksFrame() {
         setTitle("Quacks of Quedlinburg");

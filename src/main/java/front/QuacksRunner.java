@@ -6,7 +6,7 @@ import java.awt.*;
 public class QuacksRunner {
     private static QuacksFrame frame;
     private static JPanel currentPanel = null;
-    public static final GameScreenPanel gameScreen = new GameScreenPanel();
+    public static GameScreenPanel gameScreen;
     public static final InstructionsPanel instructionsPanel = new InstructionsPanel();
     public static final ScoringTrackPanel scoringPanel = new ScoringTrackPanel();
     public static final StartScreenPanel startScreen = new StartScreenPanel();
@@ -27,7 +27,8 @@ public class QuacksRunner {
             frame.remove(currentPanel);
         }
         currentPanel = panel;
-        gameScreen.setVisible(false);
+        if (gameScreen != null)
+            gameScreen.setVisible(false);
         instructionsPanel.setVisible(false);
         scoringPanel.setVisible(false);
         startScreen.setVisible(false);
@@ -42,7 +43,8 @@ public class QuacksRunner {
     public static void showStartScreen() {
         show(startScreen);
     }
-    public static void showGame() {
+    public static void showGame(int numPlayers, int set) {
+        gameScreen = new GameScreenPanel(numPlayers, set);
         show(gameScreen);
     }
     public static void showPlayers() { show(playerPanel);}

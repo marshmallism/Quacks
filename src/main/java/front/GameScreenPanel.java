@@ -8,7 +8,10 @@ import java.awt.event.MouseListener;
 
 public class GameScreenPanel extends JPanel implements MouseListener, KeyListener {
 //    public final QuacksGame g;
-    public GameScreenPanel() {
+    public GameScreenPanel(int numPlayers, int set) {
+        QuacksGame g = new QuacksGame(numPlayers, set);
+        this.addMouseListener(this);
+        this.addKeyListener(this);
 
     }
     @Override
