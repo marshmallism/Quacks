@@ -7,6 +7,7 @@ import java.awt.image.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.*;
+import java.util.Objects;
 
 //draws the first screen
 public class StartScreenPanel extends JPanel implements MouseListener {
@@ -29,10 +30,10 @@ public class StartScreenPanel extends JPanel implements MouseListener {
 
     public StartScreenPanel() {
         try {
-            background = ImageIO.read(new File("src/main/resources/Background/StartScreen.png"));
-            cauldron = ImageIO.read(new File("src/main/resources/Background/CauldronFront.png"));
-            logo = ImageIO.read(new File("src/main/resources/Background/Logo.png"));
-            buttons = ImageIO.read(new File("src/main/resources/Background/FrontButton.png"));
+            background = ImageIO.read(Objects.requireNonNull(StartScreenPanel.class.getResource("/Background/StartScreen.png")));
+            cauldron = ImageIO.read(Objects.requireNonNull(StartScreenPanel.class.getResource("/Background/CauldronFront.png")));
+            logo = ImageIO.read(Objects.requireNonNull(StartScreenPanel.class.getResource("/Background/Logo.png")));
+            buttons = ImageIO.read(Objects.requireNonNull(StartScreenPanel.class.getResource("/Background/FrontButton.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,14 +41,14 @@ public class StartScreenPanel extends JPanel implements MouseListener {
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         int w = getWidth();
         int h = getHeight();
-        g.drawImage(background,0, 0, w, h, null);
-        g.drawImage(cauldron, 0, 0, w, h, null);
-        g.drawImage(logo, 0, 0, w, h, null);
-        g.drawImage(buttons, 0, 0, w, h, null);
+        if (background != null) g.drawImage(background, 0, 0, w, h, null);
+        if (cauldron != null) g.drawImage(cauldron, 0, 0, w, h, null);
+        if (logo != null) g.drawImage(logo, 0, 0, w, h, null);
+        if (buttons != null) g.drawImage(buttons, 0, 0, w, h, null);
     }
 
     @Override
