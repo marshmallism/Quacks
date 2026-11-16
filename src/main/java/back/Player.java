@@ -19,14 +19,16 @@ public class Player {
     private boolean recievesVP;
     private boolean recievesCoins;
     private Bag bag;
+    private int set;
 
-    public Player(String name) {
+    public Player(String name, int s) {
         this.name = name;
         chips = new TreeMap<Integer, Integer>();
         pot = new Potion();
         flaskFull = true;
         rubies = 1;
         bag = new Bag();
+        set = s;
     }
     public void roundReset() {
         bag.roundReset();
@@ -35,7 +37,7 @@ public class Player {
         currentScore = 0;
     }
     public void placeInPot(Chip chip) {
-        pot.addChip(chip);
+        pot.placeChip(chip, this, set);
     }
     public void moveDroplet(int spaces) {
         dropletPos += spaces;
@@ -101,4 +103,13 @@ public class Player {
     public boolean isRecievesCoins() {return recievesCoins;}
     public Bag getBag() {return bag;}
 
+    public void addChipToBag(Chip c) {
+        bag.addChip(c);
+    }
+    public void addCurrentScore(int s) {
+        currentScore += s;
+    }
+    public void addTotalScore(int s) {
+        totalScore += s;
+    }
 }

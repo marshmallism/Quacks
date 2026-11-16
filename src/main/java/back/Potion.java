@@ -39,26 +39,6 @@ public class Potion {
         explosionProtected = false;
         doubleNextChip = false;
     }
-    public void addChip(Chip c) {
-        Entry last = getChip(placedChips.size()-1);
-        int position;
-        if (last != null) {
-            position = (int) last.getKey() + c.getValue();
-        } else {
-            position = c.getValue();
-        }
-        placedChips.put(position, c);
-        currentPosition += position;
-    }
-    public Entry<Integer, Chip> getChip(int index) {
-        SortedSet entries = (SortedSet) placedChips.entrySet();
-        Entry lastEntry = (Entry) entries.getLast();
-        if (lastEntry != null) {
-            return lastEntry;
-        }
-        return null;
-    }
-
     public int getPosition() {
         return currentPosition;
     }
@@ -78,7 +58,7 @@ public class Potion {
     public int getLastSpace() {
         if (placedChips.isEmpty())
             return getStartSpace();
-        return placedChips.lastKey();
+        return placedChips.size()-1;
     }
     public int getScoringSpace() {
         // the scoring space is the last space plus one, but not exceeding 54
@@ -211,7 +191,7 @@ public class Potion {
                 p.addRubies(1);
                 log.append("Blue set 3: Player gains 1 ruby for placing a blue chip on a ruby space. ");
             } else if (set == 4) {
-                p.addVictoryPoints(c.getValue());
+                p.addTotalScore(c.getValue());
                 log.append("Blue set 4: Player gains ").append(c.getValue()).append(" victory points for placing a blue chip on a ruby space. ");
             }
         }
