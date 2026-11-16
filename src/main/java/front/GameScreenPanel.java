@@ -1,5 +1,5 @@
 package front;
-import back.QuacksGame;
+import back.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -9,20 +9,18 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.util.Objects;
+import java.util.*;
+import static front.QuacksRunner.*;
 
 public class GameScreenPanel extends JPanel implements MouseListener, KeyListener {
     private static final int ART_WIDTH = 1920;
     private static final int ART_HEIGHT = 1080;
 
     // Clickable boxes (x, y, width, height)
-    Rectangle instruction = new Rectangle(640, 30, 1, 1);
-    Rectangle scoreboard = new Rectangle();
+    Rectangle instruction = new Rectangle(640, 30, 298, 103);
+    Rectangle scoreboard = new Rectangle(981, 30, 298, 103);
+    Rectangle fortune = new Rectangle(822, 1728, 274, 108);
     Rectangle[] options = new Rectangle[16];
-
-    private static final Rectangle START_BOX        = new Rectangle(805, 510, 315, 75);
-    private static final Rectangle INSTRUCTIONS_BOX = new Rectangle(805, 611, 315, 72);
-    private static final Rectangle QUIT_BOX         = new Rectangle(805, 713, 315, 72);
 
     public QuacksGame g;
     BufferedImage[] diceImages;
@@ -54,6 +52,16 @@ public class GameScreenPanel extends JPanel implements MouseListener, KeyListene
 
     }
     @Override
+    public void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(bg, 0, 0, getWidth(), getHeight(), null);
+        drawPlayers(g2);
+    }
+
+    public void drawPlayers(Graphics2D g2) {
+//        ArrayList<Player> players = g.getPlayers();
+    }
+    @Override
     public void keyTyped(KeyEvent e) {
 
     }
@@ -70,7 +78,15 @@ public class GameScreenPanel extends JPanel implements MouseListener, KeyListene
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        if (e.getButton()!=MouseEvent.BUTTON1)
+            return;
+        int x = e.getX();
+        int y = e.getY();
+        if (instruction.contains(x, y)) {
+            showInstructionsPanel();
+        } else if (scoreboard.contains(x, y)) {
+            showScoringTrackPanel();
+        }
     }
 
     @Override
