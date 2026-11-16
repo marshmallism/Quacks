@@ -27,9 +27,9 @@ public class GameScreenPanel extends JPanel implements MouseListener, KeyListene
     BufferedImage bg;
     BufferedImage[] gameImages;
     public GameScreenPanel(int numPlayers, int set) {
-        QuacksGame g = new QuacksGame(numPlayers, set);
+        g = new QuacksGame(numPlayers, set);
         diceImages = new BufferedImage[5];
-        gameImages = new BufferedImage[7];
+        gameImages = new BufferedImage[8];
         try {
             diceImages[0] = ImageIO.read(Objects.requireNonNull(GameScreenPanel.class.getResource("/Dice/2VPDice.png")));
             diceImages[1] = ImageIO.read(Objects.requireNonNull(GameScreenPanel.class.getResource("/Dice/DropletForwardDice.png")));
@@ -44,6 +44,7 @@ public class GameScreenPanel extends JPanel implements MouseListener, KeyListene
             gameImages[4] = ImageIO.read(Objects.requireNonNull(GameScreenPanel.class.getResource("/FlaskBagRubyExplosion/RedFlask.png")));
             gameImages[5] = ImageIO.read(Objects.requireNonNull(GameScreenPanel.class.getResource("/FlaskBagRubyExplosion/Ruby.png")));
             gameImages[6] = ImageIO.read(Objects.requireNonNull(GameScreenPanel.class.getResource("/FlaskBagRubyExplosion/YellowFlask.png")));
+            gameImages[7] = ImageIO.read(Objects.requireNonNull(GameScreenPanel.class.getResource("/The Boards/Cauldron.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,7 +60,10 @@ public class GameScreenPanel extends JPanel implements MouseListener, KeyListene
     }
 
     public void drawPlayers(Graphics2D g2) {
-//        ArrayList<Player> players = g.getPlayers();
+        ArrayList<Player> players = g.getPlayers();
+        for (int i = 0; i < players.size(); i++) {
+            g2.drawImage(gameImages[7], getWidth()/40, getHeight()/6, getWidth()/10*3, getHeight()/3, null);
+        }
     }
     @Override
     public void keyTyped(KeyEvent e) {
