@@ -28,9 +28,9 @@ public class Potion {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        resetRound();
+        roundReset();
     }
-    public void resetRound() {
+    public void roundReset() {
         placedChips = new ArrayList<>();
         currentPosition = 0;
         ratOffset = 0;
@@ -124,7 +124,7 @@ public class Potion {
             currentPosition += spaces;
         }
     }
-    public void placeChip(Chip c, Player p, int set) {
+    public String placeChip(Chip c, Player p, int set) {
         StringBuilder log = new StringBuilder();
         int move = c.getValue();
 
@@ -214,7 +214,7 @@ public class Potion {
             blueShieldRemaining = c.getValue();
             log.append("Blue set 2: Player gains a shield for the next").append(c.getValue()).append(" chip(s)!]");
         }
-        System.out.println(log.toString());
+        return log.toString();
     }
 
     public Chip removeLastChipIfWhite(Bag bag) {

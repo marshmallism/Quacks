@@ -32,12 +32,12 @@ public class Player {
     }
     public void roundReset() {
         bag.roundReset();
-        //pot.resetPot();
+        pot.roundReset();
         totalScore += currentScore;
         currentScore = 0;
     }
-    public void placeInPot(Chip chip) {
-        pot.placeChip(chip, this, set);
+    public String placeInPot(Chip chip) {
+        return pot.placeChip(chip, this, set);
     }
     public void moveDroplet(int spaces) {
         dropletPos += spaces;

@@ -90,9 +90,13 @@ public class GameScreenPanel extends JPanel implements MouseListener, KeyListene
             showInstructionsPanel();
         } else if (scoreboard.contains(x, y)) {
             showScoringTrackPanel();
+        } else if (fortune.contains(x,y) && g.getPhase() == QuacksGame.Phase.FORTUNE) {
+            g.drawFortune();
         }
     }
+    public void prompt(String prompt, String[] options) {
 
+    }
     @Override
     public void mousePressed(MouseEvent e) {
 
