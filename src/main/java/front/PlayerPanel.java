@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
-import java.io.File;
+import java.io.InputStream;
 import java.util.Objects;
 
 public class PlayerPanel extends JPanel implements MouseListener {
@@ -35,11 +35,14 @@ public class PlayerPanel extends JPanel implements MouseListener {
             images[0] = ImageIO.read(Objects.requireNonNull(PlayerPanel.class.getResource("/Background/SetScreen.png")));
             images[1] = ImageIO.read(Objects.requireNonNull(PlayerPanel.class.getResource("/Background/HowManyPlayerScreen.png")));
             images[2] = ImageIO.read(Objects.requireNonNull(PlayerPanel.class.getResource("/Background/Scroll.png")));
-//            File fontFile = new File("/resources/Fonts/EFCO Brookshire.ttf");
-//            Font baseFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-//            fancy = baseFont.deriveFont(Font.PLAIN, 48);
+            try (InputStream fontStream = Objects.requireNonNull(
+                    PlayerPanel.class.getResourceAsStream("/Fonts/EFCO Brookshire.ttf"))) {
+                Font baseFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+                fancy = baseFont.deriveFont(Font.PLAIN, 48);
+            }
         } catch (Exception e) {
             e.printStackTrace();
+            fancy = getFont().deriveFont(Font.PLAIN, 48);
         }
         addMouseListener(this);
     }
@@ -52,8 +55,8 @@ public class PlayerPanel extends JPanel implements MouseListener {
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2d.setFont(fancy);
-//        FontMetrics metrics = g2d.getFontMetrics(fancy);
+        g2d.setFont(fancy);
+        FontMetrics metrics = g2d.getFontMetrics(fancy);
         if (state.equals("players")) {
             g2d.drawImage(images[0], 0, 0, w, h, null);
             xPadding = w/6;
@@ -62,9 +65,9 @@ public class PlayerPanel extends JPanel implements MouseListener {
             for (int i = 0; i < 3; i++) {
                 g2d.drawImage(images[2], scrollLength * i + middlePadding * i + xPadding, h / 7 * 4, scrollLength, scrollHeight, null);
                 String text = i + 2 + "";
-//                int x = (scrollLength - metrics.stringWidth(text)) / 2;
-//                int y = ((scrollHeight - metrics.getHeight()) / 2) + metrics.getAscent();
-//                g2d.drawString(text, x + scrollLength * i + middlePadding * i + xPadding, y + h / 7 * 4);
+                int x = (scrollLength - metrics.stringWidth(text)) / 2;
+                int y = ((scrollHeight - metrics.getHeight()) / 2) + metrics.getAscent();
+                g2d.drawString(text, x + scrollLength * i + middlePadding * i + xPadding, y + h / 7 * 4);
             }
         } else if (state.equals("set")) {
             g2d.drawImage(images[1], 0, 0, w, h, null);
@@ -74,9 +77,9 @@ public class PlayerPanel extends JPanel implements MouseListener {
             for (int i = 0; i < 4; i++) {
                 g2d.drawImage(images[2], scrollLength * i + middlePadding * i + xPadding, h / 7 * 4, scrollLength, scrollHeight, null);
                 String text = i + 1 + "";
-//                int x = (scrollLength - metrics.stringWidth(text)) / 2;
-//                int y = ((scrollHeight - metrics.getHeight()) / 2) + metrics.getAscent();
-//                g2d.drawString(text, x + scrollLength * i + middlePadding * i + xPadding, y + h / 7 * 4);
+                int x = (scrollLength - metrics.stringWidth(text)) / 2;
+                int y = ((scrollHeight - metrics.getHeight()) / 2) + metrics.getAscent();
+                g2d.drawString(text, x + scrollLength * i + middlePadding * i + xPadding, y + h / 7 * 4);
             }
         }
     }
